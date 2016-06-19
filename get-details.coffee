@@ -23,7 +23,8 @@ getStats = (html, url) ->
     language: (/\sin ([\w-+#\s\(\)]+)/.exec(pageDesc)?[1] ? '')
     gravatar: byProp('image').attr('href')
     followers: getFollowers()
-    organizations: $('#js-pjax-container > div > div > div.column.one-fourth.vcard > div.clearfix > a').toArray().map(getOrgName)
+    organizations: $('#js-pjax-container > div > div > div.column.one-fourth > div.clearfix > a').toArray().map(getOrgName)
+    email: byProp('email').find('a').text().trim()
     contributions: getInt $('#js-pjax-container > div > div > div.column.three-fourths > div.js-repo-filter.position-relative > div > div.boxed-group.flush > h3').text().trim().split(' ')[0]
 
   stats[userStats.login] = userStats
